@@ -27,6 +27,10 @@ public class EnemyHealth : MonoBehaviour
     }
 
     private void Die() {
+
+        if(transform.name == "Elephant") {
+            Destroy(gameObject);
+        }
         if (isDead) return; //So doesnt trigger death multiple times
 
         GetComponent<Animator>().SetTrigger("death");
