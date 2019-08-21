@@ -6,9 +6,13 @@ using UnityEngine.AI;
 public class EnemyHealth : MonoBehaviour
 {
     [SerializeField] float hitPoints = 100f;
+    [SerializeField] RoundContoller roundController;
 
     bool isDead = false;
 
+    public void Start() {
+        roundController = GetComponentInParent<RoundContoller>();
+    }
 
 
     public void TakeDamage(float damage) {
@@ -35,6 +39,9 @@ public class EnemyHealth : MonoBehaviour
 
         GetComponent<Animator>().SetTrigger("death");
         isDead = true;
-        
+
+        roundController.decreaseZombiesRemaining();
+
+
     }
 }
