@@ -14,6 +14,9 @@ public class Weapon : MonoBehaviour
     [SerializeField] Ammo ammoSlot;
     [SerializeField] AmmoType ammoType;
     [SerializeField] float rateOfFire = .5f;
+    [SerializeField] TMPro.TextMeshProUGUI ammoText;
+
+
 
     bool canShoot = true;
 
@@ -25,6 +28,13 @@ public class Weapon : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && canShoot == true) {
             StartCoroutine(Shoot());
         }
+
+        DisplayAmmo();
+    }
+
+    private void DisplayAmmo() {
+        int currentAmmo = ammoSlot.GetCurrentAmmo(ammoType);
+        ammoText.SetText(currentAmmo.ToString());
     }
 
     IEnumerator Shoot() {

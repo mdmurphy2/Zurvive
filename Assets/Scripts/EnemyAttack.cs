@@ -8,6 +8,7 @@ public class EnemyAttack : MonoBehaviour
     [SerializeField] float damage = 40f;
 
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +22,7 @@ public class EnemyAttack : MonoBehaviour
         }
 
         target.TakeDamage(damage);
+        target.GetComponent<DisplayDamage>().showDamageAttack();
     }
 
 }
