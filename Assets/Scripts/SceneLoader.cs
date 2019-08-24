@@ -6,8 +6,10 @@ using UnityEngine.SceneManagement;
 public class SceneLoader : MonoBehaviour
 {
    public void ReloadGame() {
-        SceneManager.LoadScene(0); //Loads Main scene
+        SceneManager.LoadScene(1); //Loads Main scene
         Time.timeScale = 1;
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = false;
     }
 
     public void QuitGame() {

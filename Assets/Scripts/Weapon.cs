@@ -32,6 +32,7 @@ public class Weapon : MonoBehaviour
     }
 
     void Update() {
+        Cursor.lockState = CursorLockMode.Confined;
         if (Input.GetMouseButtonDown(0) && canShoot == true) {
             StartCoroutine(Shoot());
         }
