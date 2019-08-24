@@ -46,8 +46,6 @@ public class WeaponSwitcher : MonoBehaviour
     private void ProcessKeyInput() {
         if(Input.GetKeyDown(KeyCode.Alpha1)) {
             currentWeapon = 0;
-        } else if (Input.GetKeyDown(KeyCode.Alpha2)) {
-            currentWeapon = 1;
         } 
     }
 

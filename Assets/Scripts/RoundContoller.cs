@@ -1,13 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class RoundContoller : MonoBehaviour
 {
 
     [SerializeField] float timeBetweenRounds = 2f;
-    
-    
+    [SerializeField] TMPro.TextMeshProUGUI zombieText;
+
+    TextMeshPro text;
     int currentWaveIndex;
     int zombiesRemaining;
 
@@ -16,6 +18,7 @@ public class RoundContoller : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+       
         currentWaveIndex = 0;
         SetWave();
     }
@@ -23,6 +26,8 @@ public class RoundContoller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        zombieText.SetText("Zombies - " + zombiesRemaining);
+
         if(zombiesRemaining <= 0) {
             if(timer >= timeBetweenRounds) {
                 currentWaveIndex++;
