@@ -687,6 +687,11 @@ PrefabInstance:
       propertyPath: rbController
       value: 
       objectReference: {fileID: 11400004}
+    - target: {fileID: 2753694878571873217, guid: f05352d1226160f429d63bf30a6092e4,
+        type: 3}
+      propertyPath: normalSens
+      value: 0.75
+      objectReference: {fileID: 0}
     - target: {fileID: 5479496815480921879, guid: f05352d1226160f429d63bf30a6092e4,
         type: 3}
       propertyPath: FPCamera

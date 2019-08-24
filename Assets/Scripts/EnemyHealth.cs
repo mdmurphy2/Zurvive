@@ -6,7 +6,8 @@ using UnityEngine.AI;
 public class EnemyHealth : MonoBehaviour
 {
     [SerializeField] float hitPoints = 100f;
-    [SerializeField] RoundContoller roundController;
+
+    RoundContoller roundController;
 
     bool isDead = false;
 
