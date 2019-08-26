@@ -9,6 +9,7 @@ public class Weapon : MonoBehaviour
     [SerializeField] Camera FPCamera;
     [SerializeField] float range = 100f;
     [SerializeField] float damage = 30; //Change based on weapon
+    [SerializeField] float reloadTime = 2f;
     [SerializeField] ParticleSystem muzzleFlash;
     [SerializeField] GameObject hitEffect;
     [SerializeField] GameObject bloodEffect;
@@ -17,15 +18,19 @@ public class Weapon : MonoBehaviour
     [SerializeField] float rateOfFire = .5f;
     [SerializeField] TMPro.TextMeshProUGUI ammoText;
 
+    Animator animator;
 
-    AudioSource audio;
+
+    AudioContoller audioContoller;
 
 
     bool canShoot = true;
+    bool reloading = false;
 
 
     private void Start() {
-        audio = transform.GetComponent<AudioSource>();
+        audioContoller = transform.GetComponent<AudioContoller>();
+        animator = transform.GetComponent<Animator>();
     }
     private void OnEnable() {
         canShoot = true;
@@ -33,11 +38,29 @@ public class Weapon : MonoBehaviour
 
     void Update() {
         Cursor.lockState = CursorLockMode.Confined;
+        if(Input.GetKeyDown("r") && reloading == false) {
+            StartCoroutine(Reload());
+        }
+
+        if (Input.GetMouseButtonDown(0) && ammoSlot.GetCurrentAmmo(ammoType) <= 0) {
+            audioContoller.playEmpty();
+        }
         if (Input.GetMouseButtonDown(0) && canShoot == true) {
             StartCoroutine(Shoot());
         }
 
         DisplayAmmo();
+    }
+
+    IEnumerator  Reload() {
+        canShoot = false;
+        reloading = true;
+        animator.SetTrigger("reload");
+        audioContoller.playReload();
+        yield return new WaitForSeconds(reloadTime);
+        ammoSlot.setCurrentAmmo(ammoType, 10);
+        reloading = false;
+        canShoot = true;
     }
 
     private void DisplayAmmo() {
@@ -52,7 +75,7 @@ public class Weapon : MonoBehaviour
             ammoSlot.ReduceCurrentAmmo(ammoType);
             PlayMuzzleFlash();
             ProcessRaycast();
-            audio.Play();
+            audioContoller.playGunshot();
             
         }
         yield return new WaitForSeconds(rateOfFire);

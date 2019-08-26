@@ -8,11 +8,13 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] float hitPoints = 100f;
 
     RoundContoller roundController;
+    ZombieAudio zombieAudio;
 
     bool isDead = false;
 
     public void Start() {
         roundController = GetComponentInParent<RoundContoller>();
+        zombieAudio = GetComponent<ZombieAudio>();
     }
 
 
@@ -20,6 +22,7 @@ public class EnemyHealth : MonoBehaviour
 
         //Provoke Enemy
         BroadcastMessage("OnDamageTaken");
+        zombieAudio.playDamageSound();
 
         hitPoints -= damage;
         if(hitPoints <= 0) {

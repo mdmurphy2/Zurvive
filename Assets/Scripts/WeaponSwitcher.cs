@@ -15,6 +15,7 @@ public class WeaponSwitcher : MonoBehaviour
 
     // Update is called once per frame
     void Update() {
+
         int previousWeapon = currentWeapon;
 
         ProcessKeyInput();

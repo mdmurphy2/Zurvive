@@ -36,6 +36,10 @@ public class Ammo : MonoBehaviour
         GetAmmoSlot(ammoType).ammoAmount += ammoAmount;
     }
 
+    public void setCurrentAmmo(AmmoType ammoType, int ammoAmount) {
+        GetAmmoSlot(ammoType).ammoAmount = ammoAmount;
+    }
+
     private AmmoSlot GetAmmoSlot(AmmoType ammoType) {
         foreach (AmmoSlot slot in ammoSlots) {
             if(slot.ammoType == ammoType) {

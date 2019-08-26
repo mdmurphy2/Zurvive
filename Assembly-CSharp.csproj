@@ -193,6 +193,7 @@
     <Compile Include="Assets\Asset Packs\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeB.cs" />
     <Compile Include="Assets\Asset Packs\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
     <Compile Include="Assets\Asset Packs\TextMesh Pro\Examples &amp; Extras\Scripts\WarpTextExample.cs" />
+    <Compile Include="Assets\AudioContoller.cs" />
     <Compile Include="Assets\MainMenu.cs" />
     <Compile Include="Assets\Scripts\Ammo.cs" />
     <Compile Include="Assets\Scripts\AmmoPickup.cs" />
@@ -208,6 +209,7 @@
     <Compile Include="Assets\Scripts\Weapon.cs" />
     <Compile Include="Assets\Scripts\WeaponSwitcher.cs" />
     <Compile Include="Assets\Scripts\WeaponZoom.cs" />
+    <Compile Include="Assets\ZombieAudio.cs" />
     <None Include="Assets\Asset Packs\Standard Assets\Effects\GlassRefraction\Shaders\GlassStainedBumpDistort.shader" />
     <None Include="Assets\Asset Packs\ProBuilder Data\ProCore\ProGrids\Shader\pg_GridShader.shader" />
     <None Include="Assets\Asset Packs\Standard Assets\Effects\ToonShading\Shaders\ToonBasic.shader" />

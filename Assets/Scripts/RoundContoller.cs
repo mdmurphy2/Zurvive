@@ -1,7 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class RoundContoller : MonoBehaviour
 {
@@ -10,6 +12,7 @@ public class RoundContoller : MonoBehaviour
     [SerializeField] float displayUITime = 1f;
     [SerializeField] TMPro.TextMeshProUGUI zombieText;
     [SerializeField] Canvas roundCanvas;
+    [SerializeField] Canvas winCanvas;
 
     TextMeshPro text;
     int currentWaveIndex;
@@ -21,7 +24,7 @@ public class RoundContoller : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       
+        winCanvas.gameObject.SetActive(false);
         currentWaveIndex = 0;
         SetWave();
     }
@@ -30,6 +33,10 @@ public class RoundContoller : MonoBehaviour
     void Update()
     {
         zombieText.SetText("Zombies - " + zombiesRemaining);
+
+        if(currentWaveIndex >= 6) {
+            winGame();
+        }
 
         if(zombiesRemaining <= 0) {
             if(timer >= timeBetweenRounds) {
@@ -41,6 +48,16 @@ public class RoundContoller : MonoBehaviour
             }
             
         }
+    }
+
+    private void winGame() {
+        SceneManager.LoadScene(2);
+    //    winCanvas.gameObject.SetActive(true);
+    //    Time.timeScale = 0;
+    //    FindObjectOfType<WeaponSwitcher>().enabled = false;
+
+    //    Cursor.lockState = CursorLockMode.None;
+    //    Cursor.visible = true;
     }
 
     public void decreaseZombiesRemaining() {

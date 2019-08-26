@@ -7,12 +7,15 @@ public class EnemyAttack : MonoBehaviour
     PlayerHealth target;
     [SerializeField] float damage = 40f;
 
+    ZombieAudio zombieAudio;
+
 
 
     // Start is called before the first frame update
     void Start()
     {
         target = FindObjectOfType<PlayerHealth>();
+        zombieAudio = GetComponent<ZombieAudio>();
     }
 
 
@@ -23,6 +26,7 @@ public class EnemyAttack : MonoBehaviour
 
         target.TakeDamage(damage);
         target.GetComponent<DisplayDamage>().showDamageAttack();
+        zombieAudio.playAttackSound();
     }
 
 }
